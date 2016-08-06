@@ -19,7 +19,6 @@
 
     save: ->
       self = this
-
       @user.save().then ->
         self.$state.go('app.main.users.list')
 
