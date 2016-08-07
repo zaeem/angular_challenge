@@ -5,7 +5,7 @@ describe 'ApplicationController', ->
   ngDialog = null
   underscore = null
   appCtrl = null
-  
+
   groups = [
     {
       pets: ''
@@ -14,7 +14,7 @@ describe 'ApplicationController', ->
     {
       pets: 'cock horse'
       applicants: ['smoker', 'stefan']
-    }    
+    }
   ]
   emptyGroup = {
     pets: ''
@@ -60,7 +60,7 @@ describe 'ApplicationController', ->
   describe 'Constructor', ->
     it 'should assign sorting as empty json', ->
       expect(scope.sorting).toBeDefined()
-      expect(scope.sorting).toEqual({ })
+      expect(scope.sorting).toEqual({})
 
     it 'should contain scope.hasPets function', ->
       expect(scope.hasPets(emptyGroup)).toBeDefined()
@@ -103,11 +103,11 @@ describe 'ApplicationController', ->
 
     it 'should return more=true if expand is false', ->
       filledGroup.expanded = false
-      expect(scope.expandIconClass(filledGroup)).toEqual({ more: true })
+      expect(scope.expandIconClass(filledGroup)).toEqual({more: true})
 
     it 'should return less=true if expand is true', ->
       filledGroup.expanded = true
-      expect(scope.expandIconClass(filledGroup)).toEqual({ less: true })
+      expect(scope.expandIconClass(filledGroup)).toEqual({less: true})
 
 
     it 'should contain scope.rentalAsPercentOfIncomeClass function', ->
@@ -115,7 +115,8 @@ describe 'ApplicationController', ->
 
     it 'should return groups data if rental_percent_of_income is 10', ->
       filledGroup.rental_percent_of_income = 10
-      expect(scope.rentalAsPercentOfIncomeClass(filledGroup)).toEqual({ green: true })
+      expect(scope.rentalAsPercentOfIncomeClass(filledGroup))
+      .toEqual({green: true})
 
     it 'should contain scope.selectApplicants function', ->
       expect(scope.selectApplicants(emptyGroup)).toBeDefined()
@@ -126,15 +127,9 @@ describe 'ApplicationController', ->
 
 
     it 'should return groups data on fetchData calling', ->
-      _$state.params.listingId = 1;
+      _$state.params.listingId = 1
       url = "/agent/listings/#{_$state.params.listingId}/applications/"
       $httpBackend.whenGET(url).respond (method, url, data, headers, params) ->
-        console.log("yes", groups)
         [ 200, groups ]
       scope.fetchData()
-      scope.$apply();
-
-
-
-
-
+      scope.$apply()

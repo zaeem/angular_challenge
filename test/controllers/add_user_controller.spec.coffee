@@ -58,7 +58,7 @@ describe 'AddUserController', ->
   it 'should go to app.main.users.list', ->
     $httpBackend.expectPOST('/agent')
       .respond (true)
-      
+
     spyOn(_$state, 'go').and.callThrough()
     addUserCtrl.save().then (result) ->
       expect(_$state.go).toHaveBeenCalled()
